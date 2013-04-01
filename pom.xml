@@ -8,11 +8,17 @@
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.0</version>
+		<groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <source/>
           <target/>
+		  <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.mcnsa.chat.server.Server</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
