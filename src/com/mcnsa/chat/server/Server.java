@@ -15,7 +15,6 @@ import com.mcnsa.chat.chat.ChatChannel;
 import com.mcnsa.chat.client.packets.IPacket;
 import com.mcnsa.chat.managers.ChannelManager;
 import com.mcnsa.chat.managers.PlayerManager;
-import com.mcnsa.chat.client.packets.IPacket;
 
 public class Server {
 	public static ArrayList<ServerThread> threads;

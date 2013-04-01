@@ -8,19 +8,27 @@
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <source/>
-          <target/>
-		  <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>com.mcnsa.chat.server.Server</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
+    	<artifactId>maven-assembly-plugin</artifactId>
+    		<executions>
+     		 <execution>
+        		<phase>package</phase>
+        		<goals>
+          			<goal>single</goal>
+        		</goals>
+      		</execution>
+    	  </executions>
+    		<configuration>
+      			<descriptorRefs>
+        			<descriptorRef>jar-with-dependencies</descriptorRef>
+      			</descriptorRefs>
+      			<archive>
+            		<manifest>
+              			<addClasspath>true</addClasspath>
+              			<mainClass>com.mcnsa.chat.server.Server</mainClass>
+            		</manifest>
+          		</archive>
+    		</configuration>
+  </plugin>
     </plugins>
   </build>
    <repositories>
