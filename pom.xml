@@ -47,7 +47,7 @@
   	<dependency>
   		<groupId>MCNSAChat</groupId>
   		<artifactId>MCNSAChat</artifactId>
-  		<version>3.0.1.0</version>
+  		<version>LATEST</version>
   	</dependency>
   </dependencies>
 </project>
