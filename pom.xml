@@ -19,9 +19,6 @@
     	  </executions>
     		<configuration>
     			<file>${project.build.finalName}.${project.packaging}</file>
-      			<descriptorRefs>
-        			<descriptorRef>jar-with-dependencies</descriptorRef>
-      			</descriptorRefs>
       			<archive>
             		<manifest>
               			<addClasspath>true</addClasspath>
