@@ -11,10 +11,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.mcnsa.mcnsachat3.chat.ChatChannel;
-import com.mcnsa.mcnsachat3.managers.ChannelManager;
-import com.mcnsa.mcnsachat3.managers.PlayerManager;
-import com.mcnsa.mcnsachat3.packets.IPacket;
+import com.mcnsa.chat.chat.ChatChannel;
+import com.mcnsa.chat.client.packets.IPacket;
+import com.mcnsa.chat.managers.ChannelManager;
+import com.mcnsa.chat.managers.PlayerManager;
+import com.mcnsa.chat.client.packets.IPacket;
 
 public class Server {
 	public static ArrayList<ServerThread> threads;

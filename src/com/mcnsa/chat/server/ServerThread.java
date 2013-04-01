@@ -10,20 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
-import com.mcnsa.mcnsachat3.chat.ChatChannel;
-import com.mcnsa.mcnsachat3.chat.ChatPlayer;
-import com.mcnsa.mcnsachat3.managers.ChannelManager;
-import com.mcnsa.mcnsachat3.managers.PlayerManager;
-import com.mcnsa.mcnsachat3.packets.ChannelListingPacket;
-import com.mcnsa.mcnsachat3.packets.ChannelUpdatePacket;
-import com.mcnsa.mcnsachat3.packets.IPacket;
-import com.mcnsa.mcnsachat3.packets.PlayerChatPacket;
-import com.mcnsa.mcnsachat3.packets.PlayerJoinedPacket;
-import com.mcnsa.mcnsachat3.packets.PlayerLeftPacket;
-import com.mcnsa.mcnsachat3.packets.PlayerPMPacket;
-import com.mcnsa.mcnsachat3.packets.PlayerUpdatePacket;
-import com.mcnsa.mcnsachat3.packets.ServerJoinedPacket;
-import com.mcnsa.mcnsachat3.packets.ServerLeftPacket;
+import com.mcnsa.chat.chat.*;
+import com.mcnsa.chat.managers.*;
+import com.mcnsa.chat.client.packets.*;
+
 
 public class ServerThread extends Thread {
 	public Socket socket = null;

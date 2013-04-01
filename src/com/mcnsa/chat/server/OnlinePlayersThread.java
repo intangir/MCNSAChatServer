@@ -6,8 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.mcnsa.mcnsachat3.chat.ChatPlayer;
-import com.mcnsa.mcnsachat3.managers.PlayerManager;
+import com.mcnsa.chat.chat.ChatPlayer;
+import com.mcnsa.chat.managers.PlayerManager;
 
 public class OnlinePlayersThread extends Thread {
 	public void run() {
