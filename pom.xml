@@ -19,6 +19,9 @@
     	  </executions>
     		<configuration>
     			<file>${project.build.finalName}.${project.packaging}</file>
+      			<descriptorRefs>
+        			<descriptorRef>jar</descriptorRef>
+      			</descriptorRefs>
       			<archive>
             		<manifest>
               			<addClasspath>true</addClasspath>
