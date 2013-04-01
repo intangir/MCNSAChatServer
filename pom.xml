@@ -20,7 +20,7 @@
     		<configuration>
     			<file>${project.build.finalName}.${project.packaging}</file>
       			<descriptorRefs>
-        			<descriptorRef>jar</descriptorRef>
+        			<descriptorRef>jar-with-dependencies</descriptorRef>
       			</descriptorRefs>
       			<archive>
             		<manifest>
