@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mcnsa</groupId>
-  <artifactId>chat.server</artifactId>
+  <groupId>MCNSAChatServer</groupId>
+  <artifactId>MCNSAChatServer</artifactId>
   <version>1.0.0</version>
   <name>MCNSAChatServer</name>
   <build>
@@ -44,9 +44,9 @@
   		<version>1.5.1-R0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.mcnsa</groupId>
-  		<artifactId>com.mcnsa</artifactId>
-  		<version>3.0.1.1</version>
+  		<groupId>MCNSAChat</groupId>
+  		<artifactId>MCNSAChat</artifactId>
+  		<version>3.0.1.0</version>
   	</dependency>
   </dependencies>
 </project>
