@@ -48,6 +48,7 @@ public class ServerThread extends Thread {
 				isAuthed = true;
 			}
 			else {
+				in.close();
 				this.socket.close();
 				this.socket = null;
 				Server.threads.remove(this);
