@@ -22,6 +22,8 @@ public class ServerThread extends Thread {
 	public String name = "";
 	public String longname = "";
 	public String host;
+	public String passcode = "";
+	public boolean isAuthed = false;
 
 	public ServerThread(Socket socket) {
 		this.socket = socket;
@@ -42,6 +44,15 @@ public class ServerThread extends Thread {
 		if (type == ServerJoinedPacket.id) {
 			ServerJoinedPacket packet = new ServerJoinedPacket();
 			packet.read(in);
+			if (packet.passcode.contains(Server.passcode)) {
+				isAuthed = true;
+			}
+			else {
+				this.socket.close();
+				this.socket = null;
+				Server.threads.remove(this);
+				return true;
+			}
 			Server.broadcast(packet);
 			log("Server joined: " + packet.shortName);
 			name = packet.shortName;
@@ -53,7 +64,7 @@ public class ServerThread extends Thread {
 			// send the servers
 			for (ServerThread thread : Server.threads)
 				if (thread != this)
-					write(new ServerJoinedPacket(thread.name, thread.longname, PlayerManager.getPlayersByServer(thread.name)));
+					write(new ServerJoinedPacket(thread.name, thread.longname, PlayerManager.getPlayersByServer(thread.name), this.passcode));
 			return true;
 		}
 		if (type == ChannelListingPacket.id) {
@@ -148,6 +159,13 @@ public class ServerThread extends Thread {
 				e.printStackTrace();
 			}
 
+			return true;
+		}
+		if (type == TimeoutPacket.id) {
+			TimeoutPacket packet = new TimeoutPacket();
+			packet.read(in);
+			Server.broadcast(packet);
+			log("Recieved player timeout");
 			return true;
 		}
 		return false;

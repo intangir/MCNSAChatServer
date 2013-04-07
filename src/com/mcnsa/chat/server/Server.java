@@ -20,6 +20,8 @@ public class Server {
 	public static ArrayList<ServerThread> threads;
 	public static ServerSocket serverSock = null;
 	public static ServerPersistence persist;
+	public static String passcode;
+	public static ServerConfig config;
 	
 	public static BufferedWriter general_log;
 	public static BufferedWriter chat_log;
@@ -30,11 +32,15 @@ public class Server {
 		persist = new ServerPersistence();
 		PlayerManager.init();
 		ChannelManager.init();
+		
+		config = new ServerConfig();
+		passcode = config.get().getString("passcode");
 
 		System.out.println("MCNSAChat3 Server v1");
 		System.out.println("Loading data...");
 		load();
 		System.out.println("Server Started on port " + port);
+		System.out.println("Server password: "+passcode);
 
 		try {
 			serverSock = new ServerSocket(port);
@@ -72,7 +78,9 @@ public class Server {
 
 	public static void broadcast(IPacket packet) {
 		for (ServerThread thread : threads) {
-			thread.write(packet);
+			if (thread.isAuthed) {
+				thread.write(packet);
+			}
 		}
 	}
 
@@ -126,5 +134,7 @@ public class Server {
 		}
 		persist.get().set("channels", chanMap);
 		persist.save();
+		
+		config.save();
 	}
 }
