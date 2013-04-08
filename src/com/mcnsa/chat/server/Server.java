@@ -28,7 +28,7 @@ public class Server {
 	public static BufferedWriter chat_log;
 
 	public static void main(String[] args) throws IOException {
-		int port = 51325;
+		int port = 51326;
 		threads = new ArrayList<ServerThread>();
 		persist = new ServerPersistence();
 		PlayerManager.init();
