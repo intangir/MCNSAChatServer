@@ -44,7 +44,7 @@ public class ServerThread extends Thread {
 		if (type == ServerJoinedPacket.id) {
 			ServerJoinedPacket packet = new ServerJoinedPacket();
 			packet.read(in);
-			if (packet.passcode.contains(Server.passcode)) {
+			if (packet.passcode.equalsIgnoreCase(Server.passcode)) {
 				isAuthed = true;
 			}
 			else {
