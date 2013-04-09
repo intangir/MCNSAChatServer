@@ -46,8 +46,10 @@ public class ServerThread extends Thread {
 			packet.read(in);
 			if (packet.passcode.equalsIgnoreCase(Server.passcode)) {
 				isAuthed = true;
+				log("Client authenticated: "+packet.longName);
 			}
 			else {
+				log("Client failed password: "+packet.longName+" Using :"+packet.passcode);
 				in.close();
 				this.socket.close();
 				this.socket = null;
