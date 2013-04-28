@@ -15,7 +15,6 @@ import com.mcnsa.chat.chat.ChatChannel;
 import com.mcnsa.chat.client.packets.IPacket;
 import com.mcnsa.chat.managers.ChannelManager;
 import com.mcnsa.chat.managers.PlayerManager;
-import com.mcnsa.chat.server.*;
 
 public class Server {
 	public static ArrayList<ServerThread> threads;
@@ -102,14 +101,16 @@ public class Server {
 		List<Map<?, ?>> channelData = persist.get().getMapList("channels");
 		for (Map<?, ?> channel : channelData) {
 			ChatChannel c = new ChatChannel((String) channel.get("name"));
-			c.read_permission = (String) (channel.containsKey("read_permission") ? channel.get("read_permission") : "");
-			c.write_permission = (String) (channel.containsKey("write_permission") ? channel.get("write_permission") : "");
-			c.alias = (String) (channel.containsKey("alias") ? channel.get("alias") : "");
-			c.color = (String) (channel.containsKey("color") ? channel.get("color") : "");
-			List<String> modes = (List<String>) channel.get("modes");
-			for (String mode : modes)
-				c.modes.add(ChatChannel.Mode.valueOf(mode));
-			ChannelManager.channels.add(c);
+			if( c.modes.contains(ChatChannel.Mode.PERSIST)) {
+				c.read_permission = (String) (channel.containsKey("read_permission") ? channel.get("read_permission") : "");
+				c.write_permission = (String) (channel.containsKey("write_permission") ? channel.get("write_permission") : "");
+				c.alias = (String) (channel.containsKey("alias") ? channel.get("alias") : "");
+				c.color = (String) (channel.containsKey("color") ? channel.get("color") : "");
+				List<String> modes = (List<String>) channel.get("modes");
+				for (String mode : modes)
+					c.modes.add(ChatChannel.Mode.valueOf(mode));
+				ChannelManager.channels.add(c);
+			}
 		}
 	}
 
