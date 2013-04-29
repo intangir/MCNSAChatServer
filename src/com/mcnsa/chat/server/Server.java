@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.mcnsa.chat.chat.ChatChannel;
 import com.mcnsa.chat.client.packets.IPacket;
@@ -53,7 +55,16 @@ public class Server {
 		new ListenThread().start();
 		OnlinePlayersThread onlinePlayersThread = new OnlinePlayersThread();
 		onlinePlayersThread.start();
-
+		
+		//start the cleanup thread
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			  @Override
+			  public void run() {
+			    CleanUp.clean();
+			  }
+			}, 10*1000, 30*1000);
+		
 		// start the i/o loop now
 		Scanner in = new Scanner(System.in);
 		String line = null;
