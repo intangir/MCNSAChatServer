@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.mcnsa.chat.chat.ChatChannel;
-import com.mcnsa.chat.client.packets.IPacket;
-import com.mcnsa.chat.managers.ChannelManager;
-import com.mcnsa.chat.managers.PlayerManager;
+import com.mcnsa.chat.server.packets.IPacket;
+import com.mcnsa.chat.server.managers.ChannelManager;
+import com.mcnsa.chat.server.managers.PlayerManager;
 
 public class Server {
 	public static ArrayList<ServerThread> threads;

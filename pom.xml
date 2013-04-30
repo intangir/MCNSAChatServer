@@ -44,10 +44,5 @@
   		<artifactId>bukkit</artifactId>
   		<version>1.5.1-R0.1-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
-  		<groupId>MCNSAChat</groupId>
-  		<artifactId>MCNSAChat</artifactId>
-  		<version>LATEST</version>
-  	</dependency>
   </dependencies>
 </project>

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.mcnsa.chat.chat.ChatPlayer;
-import com.mcnsa.chat.managers.PlayerManager;
+import com.mcnsa.chat.server.managers.PlayerManager;
 
 public class OnlinePlayersThread extends Thread {
 	public void run() {

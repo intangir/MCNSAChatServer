@@ -11,8 +11,19 @@ import java.util.Date;
 import java.util.HashSet;
 
 import com.mcnsa.chat.chat.*;
-import com.mcnsa.chat.managers.*;
-import com.mcnsa.chat.client.packets.*;
+import com.mcnsa.chat.server.managers.ChannelManager;
+import com.mcnsa.chat.server.managers.PlayerManager;
+import com.mcnsa.chat.server.packets.ChannelListingPacket;
+import com.mcnsa.chat.server.packets.ChannelUpdatePacket;
+import com.mcnsa.chat.server.packets.IPacket;
+import com.mcnsa.chat.server.packets.PlayerChatPacket;
+import com.mcnsa.chat.server.packets.PlayerJoinedPacket;
+import com.mcnsa.chat.server.packets.PlayerLeftPacket;
+import com.mcnsa.chat.server.packets.PlayerPMPacket;
+import com.mcnsa.chat.server.packets.PlayerUpdatePacket;
+import com.mcnsa.chat.server.packets.ServerJoinedPacket;
+import com.mcnsa.chat.server.packets.ServerLeftPacket;
+import com.mcnsa.chat.server.packets.TimeoutPacket;
 
 
 public class ServerThread extends Thread {
@@ -87,6 +98,8 @@ public class ServerThread extends Thread {
 					old.modes.addAll(duplicateRemover);
 				}
 			}
+			//Clean the channel list
+			ChannelManager.cleanChanList();
 			// okay, now send the updated list to everybody
 			Server.broadcast(new ChannelListingPacket(ChannelManager.channels));
 			return true;
@@ -114,6 +127,9 @@ public class ServerThread extends Thread {
 			PlayerManager.removePlayer(packet.player);
 			PlayerManager.players.add(packet.player);
 			log(packet.player.name + " updated on " + packet.player.server);
+			//Clean up channels
+			ChannelManager.cleanChanList();
+			Server.broadcast(new ChannelListingPacket(ChannelManager.channels));
 			return true;
 		}
 		if (type == ChannelUpdatePacket.id) {
